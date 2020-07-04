@@ -1,70 +1,80 @@
-# Recuperação de senha
+<h1 align="center">
+<br>
+GoBarber API
+</h1>
 
-**RF**
+<p align="center">An API for barber appointment and scheduling.</p>
 
-- O usuário deve poder recuperar sua senha informando o seu e-mail;
-- O usuário deve receber um e-mail com instruções de recuperação de senha.
-- O usuário deve poder resetar sua senha;
+<p align="center">
+  <a href="https://github.com/GabrielStedile999/gobarber-server">
+    <img src="src/assets/goBarber.png" alt="GoBarber API">
+  </a>
+  <br>
+  <br>
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" alt="License MIT">
+  </a>
+</p>
 
-**RNF**
+<hr />
 
-- Utilizar Mailtrap para testar envios em ambiente de dev;
-- Utilizar Amazon SES para envios em produção;
-- O envio de e-mails deve acontecer em segundo plano (background job);
+## Features
 
-**RN**
+A Node.js API built with Express and all the latest tools and best practices in development!
 
-- O link enviado por email para resetar senha, deve expirar em 2h;
-- O usuário precisa confirmar a nova senha ao resetar sua senha;
+- ⚡ **Express** — A web framework for Node
+- 💾 **TypeORM** — An ORM for Node.js
+- 🍂 **MongoDB** — document-based database
+- 🔑 **Redis** — key-value data model
+- ⌨️ **Yup** - Object schema validation
+- 📧 **Nodemailer** - Send e-mails with Node.JS
+- 💖 **Lint** — ESlint/Prettier/Editor Config
 
+## Dependencies
 
-# Atualização do perfil
+- [Node.js](https://nodejs.org/en/)
+- [Yarn](https://yarnpkg.com/pt-BR/docs/install)
+- [Docker](https://www.docker.com/)
 
-**RF**
+## Prerequisites
 
-- O usuário deve poder atualizar seu nome, email e senha;
+To run this server you will need three containers running on your machine.
 
-**RN**
+To do so, you will need to run the following commands:
 
-- O usuário não pode alterar seu email para um email já atualizado;
-- Para atualizar sua senha, o usuário deve informar a senha antiga;
-- Para atualizar sua senha, o usuário precisa confirmar a nova senha;
+- `docker run --name redisbarber -p 6379:6379 -d -t redis:alpine`;
+- `docker run --name mongobarber -p 27017:27017 -d -t mongo`;
+- `docker run --name postgres -e POSTGRES_PASSWORD=docker -p 5433:5432 -d postgres`;
 
-# Painel do prestador
+_Remember: If you restart your machine, you will need to start again the server with `docker start <container_id>`._
 
-**RF**
+## Getting started
 
-- O usuário deve poder listar seus agendamentos de um dia específico;
-- O prestador deve receber uma notificação sempre que houver um novo agendamento;
-- O prestador deve poder visualizar as notificações não lidas;
+1. Clone this repo using `https://github.com/GabrielStedile999/gobarber-server`
+2. Move to the appropriate directory: `cd gobarber-api`.<br />
+3. Run `yarn` to install dependencies.<br />
+4. Copy the `.env.example` file and rename it to `.env`.<br/>
+5. Add all the values for the environment variables.<br/>
+6. Run `yarn start` and `yarn queue` to run the servers at `http://localhost:3000`.
 
-**RNF**
+## Modules
 
-- Os agendamentos do presatdor no dia devem ser armazenados em cache;
-- As notificações do prestador devem ser armazenadas no MongoDB;
-- AS notificações do prestador devem ser enviadas em tempo-real utilizando Socket.io;
+This API has the following modules:
 
-**RN**
+**Password Recover**
 
-- A notificação deve ter um status de lida ou não-lida para que o prestador possa controlar;
+**Profile Update**
 
-# Agendamento de serviços
+**Provider panel**
 
-**RF**
+**Scheduling services**
 
-- O usuário deve poder listar todos prestadores de serviço cadatrados;
-- O usuário deve poder listar os dias de um mês com pelo menos um horário disponível de um prestador;
-- O usuário deve poder listar horários disponíveis em um dia específico de um prestador;
-- O usuário deve poder realizar um novo agendamento com um prestador;
+## License
 
-**RNF**
+Distributed under the MIT License. See `LICENSE` for more information.
 
-- A listagem de prestadores deve ser armazenada em cache;
+## Contact
 
-**RN**
+Gabriel Stedile - gabriel.stedile9@gmail.com
 
-- Cada agendamento deve durar exatamente 1h;
-- Os agendamentos devem estar disponíveis entre 8h às 18h (Primeiro às 8h, último às 17h);
-- O usuário não pode agendar em um horário já ocupado;
-- O usuário não pode agendar em um horário que já passou;
-- O usuário não agendar serviços consigo mesmo;
+Project Link: [https://github.com/GabrielStedile999/gobarber-server](https://github.com/GabrielStedile999/gobarber-server)
